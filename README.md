@@ -111,7 +111,13 @@ For the backend team developing with SpringBoot, here are the key integration po
   "name": "string",
   "workId": "string",
   "email": "string",
-  "role": "EMPLOYEE | MANAGER | ADMIN"
+  "role": "EMPLOYEE | MANAGER | ADMIN",
+  "department": "string",
+  "position": "string",
+  "profileImage": "string",
+  "contactNumber": "string",
+  "dateJoined": "date",
+  "isActive": "boolean"
 }
 ```
 
@@ -120,15 +126,129 @@ For the backend team developing with SpringBoot, here are the key integration po
 {
   "id": "string",
   "employeeId": "string",
-  "category": "string",
+  "employeeName": "string",
+  "departmentId": "string",
+  "departmentName": "string",
+  "categoryId": "string",
+  "categoryName": "string",
   "amount": "number",
   "date": "date",
   "description": "string",
   "status": "PENDING | APPROVED | REJECTED",
   "receiptUrl": "string",
+  "attachments": ["string"],
   "submittedDate": "date",
   "approvedBy": "string",
-  "approvedDate": "date"
+  "approvedDate": "date",
+  "rejectionReason": "string",
+  "notes": "string",
+  "tags": ["string"]
+}
+```
+
+**Department Model**
+```json
+{
+  "id": "string",
+  "name": "string",
+  "managerId": "string",
+  "managerName": "string",
+  "budget": "number",
+  "budgetUsed": "number",
+  "budgetRemaining": "number",
+  "employeeCount": "number",
+  "description": "string",
+  "isActive": "boolean"
+}
+```
+
+**Category Model**
+```json
+{
+  "id": "string",
+  "name": "string",
+  "description": "string",
+  "icon": "string",
+  "color": "string",
+  "isDefault": "boolean",
+  "isActive": "boolean",
+  "limits": {
+    "perTransaction": "number",
+    "daily": "number",
+    "monthly": "number"
+  }
+}
+```
+
+**Analytics Summary Model**
+```json
+{
+  "totalExpenses": "number",
+  "pendingExpenses": "number",
+  "approvedExpenses": "number",
+  "rejectedExpenses": "number",
+  "thisMonthTotal": "number",
+  "lastMonthTotal": "number",
+  "percentageChange": "number",
+  "topCategories": [
+    {
+      "categoryName": "string",
+      "amount": "number",
+      "percentage": "number"
+    }
+  ],
+  "topDepartments": [
+    {
+      "departmentName": "string",
+      "amount": "number",
+      "percentage": "number"
+    }
+  ],
+  "monthlyBreakdown": [
+    {
+      "month": "string",
+      "expenses": "number",
+      "budget": "number"
+    }
+  ]
+}
+```
+
+**Notification Model**
+```json
+{
+  "id": "string",
+  "userId": "string",
+  "type": "EXPENSE_SUBMITTED | EXPENSE_APPROVED | EXPENSE_REJECTED | REMINDER | SYSTEM",
+  "title": "string",
+  "message": "string",
+  "referenceId": "string",
+  "referenceType": "EXPENSE | USER | DEPARTMENT",
+  "isRead": "boolean",
+  "createdAt": "date"
+}
+```
+
+**Report Model**
+```json
+{
+  "id": "string",
+  "name": "string",
+  "type": "EXPENSE | DEPARTMENT | USER | CATEGORY",
+  "filters": {
+    "startDate": "date",
+    "endDate": "date",
+    "departments": ["string"],
+    "categories": ["string"],
+    "status": ["string"],
+    "users": ["string"]
+  },
+  "createdBy": "string",
+  "createdAt": "date",
+  "lastGenerated": "date",
+  "format": "PDF | EXCEL | CSV",
+  "isScheduled": "boolean",
+  "scheduleFrequency": "DAILY | WEEKLY | MONTHLY | QUARTERLY"
 }
 ```
 
